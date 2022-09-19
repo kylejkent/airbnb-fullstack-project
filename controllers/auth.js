@@ -33,7 +33,7 @@ router.delete('/', (req, res) => {
 // **** START NESTED ROUTES START ****
 // *** Login Page Start ***
 router.get('/login', (req, res) => {
-  res.send('Hello from Login Page get')
+  res.render('login')
 })
 
 router.post('/login', (req, res) => {
@@ -42,7 +42,7 @@ router.post('/login', (req, res) => {
 // *** Login Page End ***
 // *** Signup Page Start ***
 router.get('/signup', (req, res) => {
-  res.send('Hello from Signup Page get')
+  res.render('signup')
 })
 
 router.post('/signup', (req, res) => {
