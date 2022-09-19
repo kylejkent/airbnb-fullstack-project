@@ -9,7 +9,7 @@ const router = express.Router()
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res) => {
-  res.send('Hello from Profile Page GET')
+  res.render('profile')
 })
 // *** GET end ***
 
