@@ -69,6 +69,10 @@ app.use('/house', require('./controllers/house'))
 // *** Review Page Start ***
 app.use('/reviews', require('./controllers/reviews'))
 // *** Reviews Page End ***
+
+// *** Profile Page Start ***
+app.use('/profile', require('./controllers/profile'))
+// *** Profile Page End ***
 // **** END ROUTES END ****
 
 // Create your routes here
