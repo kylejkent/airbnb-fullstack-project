@@ -8,14 +8,14 @@ const router = express.Router()
 // Routes
 // **** START ROUTES START ****
 // *** GET start ***
-router.get('/', (req, res) => {
-  res.send('Hello from Bookings Page')
-})
+// router.get('/', (req, res) => {
+//   res.send('Hello from Bookings Page')
+// })
 // *** GET end ***
 
 // *** POST start ***
 router.post('/', (req, res) => {
-  // code here
+  res.send('Hello from Bookings Page POST')
 })
 // *** POST end ***
 
