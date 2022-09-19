@@ -9,7 +9,7 @@ const router = express.Router()
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res) => {
-  res.send('Hello from multiple Houses Page GET')
+  res.render('./houses/list')
 })
 // *** GET end ***
 
@@ -33,12 +33,12 @@ router.delete('/', (req, res) => {
 // **** START NESTED ROUTES START ****
 // *** Create Page Start ***
 router.get('/create', (req, res) => {
-  res.send('Hello from Create Page GET')
+  res.render('./houses/create')
 })
 // *** Create Page End ***
 // *** ID Page Start ***
 router.get('/:id', (req, res) => {
-  res.send('Hello from ID Page GET')
+  res.render('./houses/one')
 })
 
 router.patch('/:id', (req, res) => {
@@ -50,7 +50,7 @@ router.delete('/:id', (req, res) => {
 })
 // ** Edit ID Start**
 router.get('/:id/edit', (req, res) => {
-  res.send('Hello from ID EDIT Page GET')
+  res.render('./houses/create')
 })
 // ** Edit ID End **
 // *** ID Page End ***
