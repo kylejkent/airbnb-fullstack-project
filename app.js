@@ -51,9 +51,7 @@ app.use('/', require('./controllers/index'))
 // *** Home Page End ***
 
 // *** Auth Page Start ***
-app.get('/auth', (req, res) => {
-  res.send('Auth Page')
-})
+app.get('/auth', require('./controllers/auth'))
 // *** Auth Page End ***
 
 // *** Booking Page Start ***
