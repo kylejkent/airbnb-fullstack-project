@@ -1,0 +1,101 @@
+<body>
+	<!-- *** MAIN NAV START *** -->
+	<nav>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-9 g-2">
+					<a class="nav-logo" href="google">
+						<img src="/images/logo-airbnb.png" alt="" />
+					</a>
+				</div>
+				<div class="col-3 g-2 align-items-end">
+					<a href="#" class="btn btn-outline-secondary profile-button">
+						<img
+							src="https://avatars.githubusercontent.com/u/19708712?v=4"
+							alt=""
+							class="profile-button"
+						/>
+						Kyle Kent
+					</a>
+					<a href="#" class="btn btn-outline-secondary logout-button">
+						Logout
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- *** MAIN NAV END *** -->
+
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-4">
+				<h1 class="border-bottom">Profile</h1>
+				<!-- *** PROFILE FORM START *** -->
+				<form>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label"
+							>Full Name</label
+						>
+						<input type="text" class="form-control" name="profile-name" />
+					</div>
+
+					<div class="mb-2">
+						<label for="exampleFormControlInput3" class="form-label"
+							>Email address</label
+						>
+						<input type="email" class="form-control" name="profile-email" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlInput2" class="form-label"
+							>Password</label
+						>
+						<input
+							type="password"
+							class="form-control"
+							name="profile-password"
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="formGroupExampleInput" class="form-label"
+							>Profile Picture</label
+						>
+						<div class="">
+							<img
+								src="https://avatars.githubusercontent.com/u/19708712?v=4"
+								alt=""
+								class="profile-button"
+							/>
+						</div>
+					</div>
+					<div class="mb-3">
+						<input
+							type=" url"
+							class="form-control"
+							name="profile-picture"
+							placeholder="http://..."
+						/>
+					</div>
+					<div class="">
+						<button type="button" class="btn btn-success">
+							Save Changes
+						</button>
+					</div>
+				</form>
+				<!-- *** PROFILE FORM END *** -->
+			</div>
+
+			<div class="col-7 offset-1">
+				<h1 class="border-bottom">My Listings</h1>
+				<div class="text-start mx-4">
+					<button class="btn btn-success">
+						List a House
+					</button>
+					<!-- *** No HOUSES LISTED START *** -->
+					<div class="m-3 border p-2">
+						<p class="text-center">You dont have any houses listed</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
