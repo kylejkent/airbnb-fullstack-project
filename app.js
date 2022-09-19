@@ -47,9 +47,7 @@ require('./express-sessions')(app)
 // Routes
 // **** START ROUTES START ****
 // *** Home Page start ***
-app.get('/', (req, res) => {
-  res.send('Home Page')
-})
+app.use('/', require('./controllers/index'))
 // *** Home Page End ***
 
 // *** Auth Page Start ***
