@@ -9,13 +9,13 @@ const router = express.Router()
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res) => {
-  res.send('Hello from Reviews Page')
+  res.send('Hello from Reviews Page GET')
 })
 // *** GET end ***
 
 // *** POST start ***
 router.post('/', (req, res) => {
-  // code here
+  res.send('Hello from Reviews Page POST')
 })
 // *** POST end ***
 
