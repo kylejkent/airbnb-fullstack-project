@@ -51,31 +51,23 @@ app.use('/', require('./controllers/index'))
 // *** Home Page End ***
 
 // *** Auth Page Start ***
-app.get('/auth', require('./controllers/auth'))
+app.use('/auth', require('./controllers/auth'))
 // *** Auth Page End ***
 
 // *** Booking Page Start ***
-app.get('/booking', (req, res) => {
-  res.send('Booking Page')
-})
+app.use('/bookings', require('./controllers/bookings'))
 // *** Booking Page End ***
 
 // *** Houses Page Start ***
-app.get('/houses', (req, res) => {
-  res.send('houses Page')
-})
+app.use('/houses', require('./controllers/houses'))
 // *** Houses Page End ***
 
 // *** Single House Page Start ***
-app.get('/house', (req, res) => {
-  res.send('Single House Page')
-})
+app.use('/house', require('./controllers/house'))
 // *** Single House Page End ***
 
 // *** Review Page Start ***
-app.get('/reviews', (req, res) => {
-  res.send('Reviews Page')
-})
+app.use('/reviews', require('./controllers/reviews'))
 // *** Reviews Page End ***
 // **** END ROUTES END ****
 

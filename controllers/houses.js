@@ -9,7 +9,7 @@ const router = express.Router()
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res) => {
-  res.send('Hello from Auth Page')
+  res.send('Hello from multiple Houses Page')
 })
 // *** GET end ***
 
