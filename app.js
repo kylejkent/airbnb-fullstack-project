@@ -45,8 +45,44 @@ mongoose.connect(
 require('./express-sessions')(app)
 
 // Routes
+// **** START ROUTES START ****
+// *** Home Page start ***
+app.get('/', (req, res) => {
+  res.send('Home Page')
+})
+// *** Home Page End ***
 
-// ::::
+// *** Auth Page Start ***
+app.get('/auth', (req, res) => {
+  res.send('Auth Page')
+})
+// *** Auth Page End ***
+
+// *** Booking Page Start ***
+app.get('/booking', (req, res) => {
+  res.send('Booking Page')
+})
+// *** Booking Page End ***
+
+// *** Houses Page Start ***
+app.get('/houses', (req, res) => {
+  res.send('houses Page')
+})
+// *** Houses Page End ***
+
+// *** Single House Page Start ***
+app.get('/house', (req, res) => {
+  res.send('Single House Page')
+})
+// *** Single House Page End ***
+
+// *** Review Page Start ***
+app.get('/reviews', (req, res) => {
+  res.send('Reviews Page')
+})
+// *** Reviews Page End ***
+// **** END ROUTES END ****
+
 // Create your routes here
 // ::::
 
