@@ -30,6 +30,10 @@ router.delete('/', (req, res) => {
   // code here
 })
 // *** DELETE end ***
+// **** START NESTED ROUTES START ****
+
+// **** END NESTED ROUTES END ****
+
 // **** END ROUTES END ****
 
 // Export
