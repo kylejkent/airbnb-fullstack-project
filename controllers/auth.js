@@ -36,15 +36,62 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', (req, res) => {
-  res.send('Hello from Login Page POST')
+router.post('/login', async (req, res, next) => {
+  try {
+    // ** start code **
+    // console.log(req.body)
+    // *** start define user ***
+    let user = {
+      email: req.body.loginEmail,
+      password: req.body.loginPassword
+    }
+    if (
+      (await Users.findOne({
+        email: user.email,
+        password: user.password
+      })) == null
+    ) {
+      // ** start handle true error ***
+      console.log('BAD!!! NO Matching email or password' + user)
+      {
+        throw new Error('Either email or password incorrect')
+      }
+      // ** end handle true error ***
+    } else {
+      let loggedUser = await Users.findOne({
+        email: user.email,
+        password: user.password
+      })
+      // *** start handle signin ***
+      req.login(loggedUser, err => {
+        if (err) {
+          throw err
+        }
+      })
+      console.log('LOGGED IN USER:  ' + req.user)
+      res.redirect('/houses')
+      // *** End handle Signin ***
+    }
+    // *** start find database user ***
+    let userDatabase = await Users.findOne({
+      email: user.email,
+      password: user.password
+    })
+    console.log(userDatabase)
+    // *** end find database user ***
+    // *** end define user ***
+    // ** end code **
+  } catch (err) {
+    next(err)
+  }
 })
 // *** Login Page End ***
+
 // *** Signup Page Start ***
 router.get('/signup', (req, res) => {
   res.render('signup')
 })
-// *** signup page end ***
+
 router.post('/signup', async (req, res, next) => {
   try {
     // *** start define user ***
