@@ -14,8 +14,12 @@ const router = express.Router()
 // *** GET end ***
 
 // *** POST start ***
-router.post('/', (req, res) => {
-  res.send('Hello from Bookings Page POST')
+router.post('/', (req, res, next) => {
+  try {
+    // code that should work
+  } catch (err) {
+    next(err)
+  }
 })
 // *** POST end ***
 

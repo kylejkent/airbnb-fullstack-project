@@ -6,6 +6,17 @@ const router = express.Router()
 const Users = require('../models/users.js')
 
 // Routes
+// **** start EXAMPLE ROUTE WITH ERROR start ****
+// *** POST start ***
+// router.post('/', (req, res, next) => {
+//   try {
+//     // code that should work
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+// *** POST end ***
+// **** end EXAMPLE ROUTE WITH ERROR end ****
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res) => {
