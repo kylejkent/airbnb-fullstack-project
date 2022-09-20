@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // Models
-// const Products = require('../models/products')
+const Users = require('../models/users.js')
 
 // Routes
 // **** START ROUTES START ****
@@ -46,8 +46,20 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/signup', (req, res) => {
+router.post('/signup', async (req, res) => {
   console.log(req.body)
+  let user = {
+    avatar: req.body.profilePicture,
+    email: req.body.profileEmail,
+    name: req.body.profileFullname,
+    password: req.body.profilePassword
+  }
+  console.log(user)
+  // *** Start handle signup ***
+  let userCreate = await Users.create(user)
+  // req.login(userCreate)
+  // console.log(userCreate)
+  // *** End handle Signup
   res.redirect('/houses')
 })
 // *** Signup Page End ***
