@@ -42,11 +42,13 @@ router.post('/login', (req, res) => {
 // *** Login Page End ***
 // *** Signup Page Start ***
 router.get('/signup', (req, res) => {
+  console.log(req)
   res.render('signup')
 })
 
 router.post('/signup', (req, res) => {
-  res.send('Hello from Signup Page POST')
+  console.log(req.body)
+  res.redirect('/houses')
 })
 // *** Signup Page End ***
 // *** Logout Page Start ***
