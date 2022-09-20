@@ -146,7 +146,16 @@ router.post('/signup', async (req, res, next) => {
 // *** Signup Page End ***
 // *** Logout Page Start ***
 router.get('/logout', (req, res) => {
-  res.send('Goodbye from Logout page!!! GET')
+  req.logout()
+  req.session.destroy(err => {
+    if (err) {
+      next(err)
+    }
+    res.clearCookie('connect.sid')
+    // continue coding here
+    res.redirect('login')
+    console.log('USER LOGGED OUT')
+  })
 })
 // *** Logout Page End ***
 // **** END NESTED ROUTES END ****
