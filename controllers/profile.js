@@ -6,10 +6,30 @@ const router = express.Router()
 // const Products = require('../models/products')
 
 // Routes
+// **** start EXAMPLE ROUTE WITH ERROR start ****
+// *** POST start ***
+// router.post('/', (req, res, next) => {
+//   try {
+//     // code that should work
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+// *** POST end ***
+// **** end EXAMPLE ROUTE WITH ERROR end ****
 // **** START ROUTES START ****
 // *** GET start ***
-router.get('/', (req, res) => {
-  res.render('profile')
+router.get('/', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('profile')
+    } else {
+      res.redirect('/auth/login')
+    }
+    // res.render('profile')
+  } catch (err) {
+    next(err)
+  }
 })
 // *** GET end ***
 
