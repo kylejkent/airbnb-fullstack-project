@@ -15,7 +15,15 @@ const router = express.Router()
 
 // *** POST start ***
 router.post('/', (req, res) => {
-  res.send('Hello from Bookings Page POST')
+  try {
+    if (req.isAuthenticated()) {
+      res.send('bookings')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 // *** POST end ***
 

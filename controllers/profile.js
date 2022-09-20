@@ -40,8 +40,17 @@ router.get('/', (req, res, next) => {
 // *** POST end ***
 
 // *** PATCH start ***
-router.patch('/', (req, res) => {
-  res.send('Hello from Profile Page PATCH')
+router.patch('/', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('profile')
+    } else {
+      res.redirect('/auth/login')
+    }
+    // res.render('profile')
+  } catch (err) {
+    next(err)
+  }
 })
 // *** PATCH end ***
 

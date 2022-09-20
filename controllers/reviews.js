@@ -14,8 +14,17 @@ router.get('/', (req, res) => {
 // *** GET end ***
 
 // *** POST start ***
-router.post('/', (req, res) => {
-  res.send('Hello from Reviews Page POST')
+router.post('/', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.send('Hello from Reviews Page POST')
+    } else {
+      res.redirect('/auth/login')
+    }
+    // res.render('profile')
+  } catch (err) {
+    next(err)
+  }
 })
 // *** POST end ***
 

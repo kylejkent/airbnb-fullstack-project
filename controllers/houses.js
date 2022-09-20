@@ -14,8 +14,16 @@ router.get('/', (req, res) => {
 // *** GET end ***
 
 // *** POST start ***
-router.post('/', (req, res) => {
-  // code here
+router.post('/', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('houses')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 // *** POST end ***
 
@@ -32,8 +40,16 @@ router.delete('/', (req, res) => {
 // *** DELETE end ***
 // **** START NESTED ROUTES START ****
 // *** Create Page Start ***
-router.get('/create', (req, res) => {
-  res.render('./houses/create')
+router.get('/create', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('./houses/create')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 // *** Create Page End ***
 // *** ID Page Start ***
@@ -41,16 +57,40 @@ router.get('/:id', (req, res) => {
   res.render('./houses/one')
 })
 
-router.patch('/:id', (req, res) => {
-  res.send('Hello from ID Page PATCH')
+router.patch('/:id', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('./houses/create')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.delete('/:id', (req, res) => {
-  res.send('Hello from ID Page DELETE')
+router.delete('/:id', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.send('Hello from ID Page DELETE')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 // ** Edit ID Start**
-router.get('/:id/edit', (req, res) => {
-  res.render('./houses/create')
+router.get('/:id/edit', (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      res.render('./houses/create')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 // ** Edit ID End **
 // *** ID Page End ***
