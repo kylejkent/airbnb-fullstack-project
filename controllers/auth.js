@@ -42,35 +42,11 @@ router.post('/login', (req, res) => {
 // *** Login Page End ***
 // *** Signup Page Start ***
 router.get('/signup', (req, res) => {
-  console.log(req)
   res.render('signup')
 })
 
 router.post('/signup', async (req, res) => {
-  // *** start define user ***
-  console.log(req.body)
-  let user = {
-    avatar: req.body.profilePicture,
-    email: req.body.profileEmail,
-    name: req.body.profileFullname,
-    password: req.body.profilePassword
-  }
-  // *** end define user ***
-  // *** Start check if user already ***
-  const checkUserAlready = (user.email) => {}
-  // *** End check if user already ***
-  // *** Start handle signup ***
-  let userCreate = await Users.create(user)
-  let loggedUser = await Users.findOne({ email: user.email })
-  req.login(loggedUser, err => {
-    if (err) {
-      throw err
     }
-  })
-  console.log(req.user)
-  console.log('LOGGED IN')
-  // *** End handle Signup
-  res.redirect('/houses')
 })
 // *** Signup Page End ***
 // *** Logout Page Start ***
