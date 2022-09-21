@@ -116,7 +116,14 @@ router.get('/:id', async (req, res, next) => {
   let mainPhoto = house.photos[0]
   console.log(house)
   console.log('Main Photo = ' + mainPhoto)
-  res.render('./houses/one')
+  res.render('./houses/one', {
+    mainPhoto,
+    house,
+    user: {
+      avatar: req.user.avatar,
+      name: req.user.name
+    }
+  })
 })
 
 router.patch('/:id', (req, res, next) => {
