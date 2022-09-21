@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('./houses/list', {
+      res.render('profile', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
@@ -55,7 +55,7 @@ router.patch('/', (req, res, next) => {
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('./houses/list', {
+      res.render('profile', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
