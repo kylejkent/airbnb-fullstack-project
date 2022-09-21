@@ -61,7 +61,7 @@ router.post('/', async (req, res, next) => {
       let house = await Houses.create(houseToCreate)
       // *** End handle create
       // *** start redirect to house ***
-      res.redirect(`/house/${house.id}`)
+      res.redirect(`/houses/${house.id}`)
       // *** end redirect to house ***
       // *** end NEW HOUSE ***
     } else {
