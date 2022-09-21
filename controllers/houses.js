@@ -108,7 +108,14 @@ router.get('/create', (req, res, next) => {
 })
 // *** Create Page End ***
 // *** ID Page Start ***
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res, next) => {
+  let house = await Houses.findById(req.params.id).populate({
+    path: 'host',
+    select: 'avatar name'
+  })
+  let mainPhoto = house.photos[0]
+  console.log(house)
+  console.log('Main Photo = ' + mainPhoto)
   res.render('./houses/one')
 })
 
