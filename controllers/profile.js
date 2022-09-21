@@ -21,13 +21,17 @@ const router = express.Router()
 // *** GET start ***
 router.get('/', (req, res, next) => {
   try {
-    if (req.isAuthenticated()) {
-      res.render('profile', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }
@@ -47,13 +51,17 @@ router.get('/', (req, res, next) => {
 // *** PATCH start ***
 router.patch('/', (req, res, next) => {
   try {
-    if (req.isAuthenticated()) {
-      res.render('profile', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }

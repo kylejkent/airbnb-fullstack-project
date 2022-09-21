@@ -10,13 +10,17 @@ const router = express.Router()
 // *** GET start ***
 router.get('/', (req, res) => {
   try {
-    if (req.isAuthenticated()) {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
       res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('./houses/list')
     }
@@ -29,44 +33,20 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res, next) => {
   console.log(req.body)
   try {
-    if (req.isAuthenticated()) {
-      res.render('houses', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }
-    // *** start NEW HOUSE ***
-    console.log('HOUSE TO CREATE')
-    // *** Start handle create ***
-    let host = req.user._id
-    let mainPhoto = req.body.housePhotos[0]
-    let houseToCreate = {
-      description: req.body.houseDescription,
-      host: host,
-      location: req.body.houseLocation,
-      photos: req.body.housePhotos,
-      price: req.body.housePrice,
-      rooms: req.body.houseRooms,
-      title: req.body.houseTitle
-    }
-    console.log(host)
-    console.log(mainPhoto)
-    console.log(houseToCreate)
-    let house = await Houses.create(houseToCreate)
-    // let loggedUser = await Users.findOne({ email: user.email })
-    // req.login(loggedUser, err => {
-    // 	if (err) {
-    // 		throw err
-    // 	}
-    // })
-    console.log('LOGGED IN USER:  ' + req.user)
-    res.redirect('/houses')
-    // *** End handle create
-    // *** end NEW HOUSE ***
   } catch (err) {
     next(err)
   }
@@ -88,13 +68,17 @@ router.delete('/', (req, res) => {
 // *** Create Page Start ***
 router.get('/create', (req, res, next) => {
   try {
-    if (req.isAuthenticated()) {
-      res.render('./houses/create', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }
@@ -110,13 +94,17 @@ router.get('/:id', (req, res) => {
 
 router.patch('/:id', (req, res, next) => {
   try {
-    if (req.isAuthenticated()) {
-      res.render('./houses/create', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }
@@ -127,13 +115,17 @@ router.patch('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   try {
-    if (req.isAuthenticated()) {
-      res.send('Hello from ID Page DELETE', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }
@@ -144,13 +136,17 @@ router.delete('/:id', (req, res, next) => {
 // ** Edit ID Start**
 router.get('/:id/edit', (req, res, next) => {
   try {
-    if (req.isAuthenticated()) {
-      res.render('./houses/create', {
+    if (
+      // *** start authed user
+      req.isAuthenticated()
+    ) {
+      res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end authed user ***
     } else {
       res.redirect('/auth/login')
     }
