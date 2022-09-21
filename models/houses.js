@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const ObjectId = mongoose.Schema.Types.ObjectId
 
-let housesModel = mongoose.model('users', {
+let housesModel = mongoose.model('houses', {
   description: {
     type: String,
     required: true
