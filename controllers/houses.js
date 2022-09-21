@@ -24,8 +24,7 @@ router.get('/', (req, res) => {
     next(err)
   }
 })
-// *** GET end ***
-
+// *** GET end ***//test
 // *** POST start ***
 router.post('/', async (req, res, next) => {
   console.log(req.body)
