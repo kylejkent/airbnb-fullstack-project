@@ -1,5 +1,6 @@
 <!-- *** MAIN NAV START *** -->
 <nav>
+				{{#if user}}
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-9 g-2">
@@ -10,16 +11,30 @@
 			<div class="col-3 g-2 align-items-end">
 				<a href="/profile" class="btn btn-outline-secondary profile-button" method:='post'>
 					<img
-						src="https://avatars.githubusercontent.com/u/19708712?v=4"
+						src="{{user.avatar}}"
 						alt=""
 						class="profile-button"
 					/>
-					Kyle Kent
+					{{user.name}}
 				</a>
 				<a href="/auth/logout" class="btn btn-outline-secondary logout-button">
 					Logout
 				</a>
 			</div>
+			{{else}}
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-9 g-2">
+						<a class="nav-logo" href="google">
+							<img src="../images/logo-airbnb.png" alt="" />
+						</a>
+					</div>
+					<div class="col-3 g-2 align-items-end">
+						<a href="/auth/login" class="btn btn-outline-secondary logout-button">
+							login
+						</a>
+					</div>
+			{{/if}}
 		</div>
 	</div>
 </nav>

@@ -9,7 +9,20 @@ const router = express.Router()
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res) => {
-  res.render('./houses/list')
+  try {
+    if (req.isAuthenticated()) {
+      res.render('./houses/list', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
+    } else {
+      res.redirect('./houses/list')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 // *** GET end ***
 
@@ -17,7 +30,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.render('houses')
+      res.render('houses', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
@@ -43,7 +61,12 @@ router.delete('/', (req, res) => {
 router.get('/create', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.render('./houses/create')
+      res.render('./houses/create', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
@@ -60,7 +83,12 @@ router.get('/:id', (req, res) => {
 router.patch('/:id', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.render('./houses/create')
+      res.render('./houses/create', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
@@ -72,7 +100,12 @@ router.patch('/:id', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.send('Hello from ID Page DELETE')
+      res.send('Hello from ID Page DELETE', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
@@ -84,7 +117,12 @@ router.delete('/:id', (req, res, next) => {
 router.get('/:id/edit', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.render('./houses/create')
+      res.render('./houses/create', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
