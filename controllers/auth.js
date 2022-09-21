@@ -18,29 +18,6 @@ const Users = require('../models/users.js')
 // *** POST end ***
 // **** end EXAMPLE ROUTE WITH ERROR end ****
 // **** START ROUTES START ****
-// *** GET start ***
-router.get('/', (req, res) => {
-  res.send('Hello from Auth Page GET')
-})
-// *** GET end ***
-
-// *** POST start ***
-router.post('/', (req, res) => {
-  // code here
-})
-// *** POST end ***
-
-// *** PATCH start ***
-router.patch('/', (req, res) => {
-  // code here
-})
-// *** PATCH end ***
-
-// *** DELETE start ***
-router.delete('/', (req, res) => {
-  // code here
-})
-// *** DELETE end ***
 // **** START NESTED ROUTES START ****
 // *** Login Page Start ***
 router.get('/login', (req, res) => {
