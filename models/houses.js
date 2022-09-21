@@ -24,7 +24,7 @@ let housesModel = mongoose.model('houses', {
     type: Number,
     required: true
   },
-  room: {
+  rooms: {
     type: Number,
     required: true
   },
