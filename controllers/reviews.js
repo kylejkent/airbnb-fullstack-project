@@ -17,7 +17,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.send('Hello from Reviews Page POST')
+      res.send('Hello from Reviews Page POST', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }

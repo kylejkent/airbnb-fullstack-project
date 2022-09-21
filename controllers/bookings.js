@@ -17,7 +17,12 @@ const router = express.Router()
 router.post('/', (req, res) => {
   try {
     if (req.isAuthenticated()) {
-      res.send('bookings')
+      res.send('bookings', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }

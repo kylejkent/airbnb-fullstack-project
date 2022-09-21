@@ -22,7 +22,12 @@ const router = express.Router()
 router.get('/', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.render('profile')
+      res.render('profile', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
@@ -43,7 +48,12 @@ router.get('/', (req, res, next) => {
 router.patch('/', (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
-      res.render('profile')
+      res.render('profile', {
+        user: {
+          avatar: req.user.avatar,
+          name: req.user.name
+        }
+      })
     } else {
       res.redirect('/auth/login')
     }
