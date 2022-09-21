@@ -62,10 +62,6 @@ app.use('/bookings', require('./controllers/bookings'))
 app.use('/houses', require('./controllers/houses'))
 // *** Houses Page End ***
 
-// *** Single House Page Start ***
-app.use('/house', require('./controllers/house'))
-// *** Single House Page End ***
-
 // *** Review Page Start ***
 app.use('/reviews', require('./controllers/reviews'))
 // *** Reviews Page End ***
