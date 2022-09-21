@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // Models
-// const Products = require('../models/products')
+const Houses = require('../models/houses')
 
 // Routes
 // **** START ROUTES START ****
