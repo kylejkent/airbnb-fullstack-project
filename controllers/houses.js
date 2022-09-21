@@ -27,7 +27,8 @@ router.get('/', (req, res) => {
 // *** GET end ***
 
 // *** POST start ***
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
+  console.log(req.body)
   try {
     if (req.isAuthenticated()) {
       res.render('houses', {
@@ -39,6 +40,34 @@ router.post('/', (req, res, next) => {
     } else {
       res.redirect('/auth/login')
     }
+    // *** start NEW HOUSE ***
+    console.log('HOUSE TO CREATE')
+    // *** Start handle create ***
+    let host = req.user._id
+    let mainPhoto = req.body.housePhotos[0]
+    let houseToCreate = {
+      description: req.body.houseDescription,
+      host: host,
+      location: req.body.houseLocation,
+      photos: req.body.housePhotos,
+      price: req.body.housePrice,
+      rooms: req.body.houseRooms,
+      title: req.body.houseTitle
+    }
+    console.log(host)
+    console.log(mainPhoto)
+    console.log(houseToCreate)
+    let house = await Houses.create(houseToCreate)
+    // let loggedUser = await Users.findOne({ email: user.email })
+    // req.login(loggedUser, err => {
+    // 	if (err) {
+    // 		throw err
+    // 	}
+    // })
+    console.log('LOGGED IN USER:  ' + req.user)
+    res.redirect('/houses')
+    // *** End handle create
+    // *** end NEW HOUSE ***
   } catch (err) {
     next(err)
   }
