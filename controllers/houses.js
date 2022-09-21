@@ -31,19 +31,36 @@ router.get('/', (req, res) => {
 // *** GET end ***//test
 // *** POST start ***
 router.post('/', async (req, res, next) => {
-  console.log(req.body)
   try {
     if (
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('./houses/list', {
-        user: {
-          avatar: req.user.avatar,
-          name: req.user.name
-        }
-      })
+      // res.render('./houses/list', {
+      //   user: {
+      //     avatar: req.user.avatar,
+      //     name: req.user.name
+      //   }
+      // })
       // *** end authed user ***
+      // *** start NEW HOUSE ***
+      console.log('HOUSE TO CREATE')
+      // *** Start handle create ***
+      let mainPhoto = req.body.housePhotos[0]
+      let houseToCreate = {
+        description: req.body.houseDescription,
+        host: req.user._id,
+        location: req.body.houseLocation,
+        photos: req.body.housePhotos,
+        price: req.body.housePrice,
+        rooms: req.body.houseRooms,
+        title: req.body.houseTitle
+      }
+      console.log(mainPhoto)
+      console.log(houseToCreate)
+      let house = await Houses.create(houseToCreate)
+      // *** End handle create
+      // *** end NEW HOUSE ***
     } else {
       res.redirect('/auth/login')
     }
@@ -72,7 +89,7 @@ router.get('/create', (req, res, next) => {
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('./houses/list', {
+      res.render('./houses/create', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
