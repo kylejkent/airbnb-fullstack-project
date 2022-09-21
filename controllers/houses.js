@@ -60,6 +60,9 @@ router.post('/', async (req, res, next) => {
       console.log(houseToCreate)
       let house = await Houses.create(houseToCreate)
       // *** End handle create
+      // *** start redirect to house ***
+      res.redirect(`/house/${house.id}`)
+      // *** end redirect to house ***
       // *** end NEW HOUSE ***
     } else {
       res.redirect('/auth/login')
