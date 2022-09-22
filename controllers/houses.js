@@ -33,7 +33,8 @@ router.get('/', async (req, res, next) => {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
-        }
+        },
+        houses
       })
       // *** end render
       // *** end authed user ***
