@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // Models
-// const Products = require('../models/products')
+const Users = require('../models/users.js')
 
 // Routes
 // **** start EXAMPLE ROUTE WITH ERROR start ****
@@ -47,14 +47,36 @@ router.get('/', async (req, res, next) => {
 // *** PATCH start ***
 router.patch('/', async (req, res, next) => {
   console.log(req.user)
+  console.log(req.user._id)
   console.log(req.body)
   try {
     if (
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('profile', { user: req.user })
+      // res.render('profile', { user: req.user })
       // *** end authed user ***
+      let updateUser = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        avatar: req.body.avatar
+      }
+      console.log(req.user._id)
+      console.log(updateUser)
+      // *** start update profile ***
+      let loggedUser = await Users.findByIdAndUpdate(req.user._id, updateUser, {
+        new: true
+      })
+      // *** end update profile ***
+      // *** start render updated
+      // *** end render updated
+      req.login(loggedUser, err => {
+        if (err) {
+          throw err
+        }
+        res.redirect('/profile')
+      })
     } else {
       res.redirect('/auth/login')
     }
