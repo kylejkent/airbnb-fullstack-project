@@ -4,6 +4,7 @@ const router = express.Router()
 
 // Models
 const Users = require('../models/users.js')
+const Houses = require('../models/houses.js')
 
 // Routes
 // **** start EXAMPLE ROUTE WITH ERROR start ****
@@ -26,7 +27,10 @@ router.get('/', async (req, res, next) => {
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('profile', { user: req.user })
+      let userHouses = await Houses.find({ host: req.user._id })
+      console.log(userHouses)
+
+      res.render('profile', { user: req.user, userHouses })
       // *** end authed user ***
     } else {
       res.redirect('/auth/login')
