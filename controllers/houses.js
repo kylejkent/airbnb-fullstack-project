@@ -101,19 +101,19 @@ router.get('/', async (req, res, next) => {
       // *** end search IF ***
       // *** start import houses
       let houses = await Houses.find(req.query, {
-        title: 1,
-        price: 1,
-        rooms: 1,
-        location: 1,
-        photos: 1
+        // title: 1,
+        // price: 1,
+        // rooms: 1,
+        // location: 1,
+        // photos: 1
       })
-      // console.log(req.query)
-      // console.log('Check houses')
+      console.log(req.query)
+      console.log('not logged')
       console.log(houses)
       // *** end import houses
 
       // *** start render
-      res.render('houses/list', houses)
+      res.render('houses/list', { houses })
       // *** end render
     }
   } catch (err) {
