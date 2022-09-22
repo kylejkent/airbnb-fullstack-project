@@ -19,7 +19,7 @@ const router = express.Router()
 // **** end EXAMPLE ROUTE WITH ERROR end ****
 // **** START ROUTES START ****
 // *** GET start ***
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   console.log(req.user)
   try {
     if (
@@ -45,18 +45,15 @@ router.get('/', (req, res, next) => {
 // *** POST end ***
 
 // *** PATCH start ***
-router.patch('/', (req, res, next) => {
+router.patch('/', async (req, res, next) => {
+  console.log(req.user)
+  console.log(req.body)
   try {
     if (
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('profile', {
-        user: {
-          avatar: req.user.avatar,
-          name: req.user.name
-        }
-      })
+      res.render('profile', { user: req.user })
       // *** end authed user ***
     } else {
       res.redirect('/auth/login')

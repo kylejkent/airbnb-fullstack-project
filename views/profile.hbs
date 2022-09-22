@@ -8,19 +8,19 @@
 			<div class="col-4">
 				<h1 class="border-bottom">Profile</h1>
 				<!-- *** PROFILE FORM START *** -->
-				<form>
+				<form action="/profile?_method=PATCH" method="post">
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label"
 							>Full Name</label
 						>
-						<input type="text" class="form-control" name="profile-name" value="{{user.name}}" />
+						<input type="text" class="form-control" name="name" value="{{user.name}}" />
 					</div>
 
 					<div class="mb-2">
 						<label for="exampleFormControlInput3" class="form-label"
 							>Email address</label
 						>
-						<input type="email" class="form-control" name="profile-email" value="{{user.email}}" />
+						<input type="email" class="form-control" name="email" value="{{user.email}}" />
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput2" class="form-label"
@@ -29,8 +29,8 @@
 						<input
 							type="password"
 							class="form-control"
-							name="profile-password"
-							value="user.password"
+							name="password"
+							value="{{user.password}}"
 						/>
 					</div>
 					<div class="mb-3">
@@ -49,13 +49,13 @@
 						<input
 							type=" url"
 							class="form-control"
-							name="profile-picture"
+							name="avatar"
 							placeholder="http://..."
 							value="{{user.avatar}}"
 						/>
 					</div>
 					<div class="">
-						<button type="button" class="btn btn-success">
+						<button  class="btn btn-success">
 							Save Changes
 						</button>
 					</div>
