@@ -93,9 +93,9 @@ router.get('/', async (req, res, next) => {
         req.query.title = { $regex: req.query.searchBar }
         delete req.query.searchBar
       }
-      console.log('query')
-      console.log(req.query)
-      console.log('query')
+      // console.log('query')
+      // console.log(req.query)
+      // console.log('query')
       // console.log(houses)
 
       // *** end search IF ***
