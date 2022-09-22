@@ -86,19 +86,29 @@
 		<div class="row row-cols-4 g-4">
 			<!-- ** House Card Start ** -->
 			<div class="col">
+				<!-- ***Start House Card -->
+				{{#each houses as |house|}}
 				<div class="card">
 					<img
+						src="{{house.photos.[0]}}"
 						class="card-img-top"
 						alt="..."
 					/>
 					<div class="card-body">
+						<span class="card-link card-location text-muted">{{house.location}}</span>
+						<span class="text-muted">• {{house.rooms}} Rooms</span>
+						<h5 class="card-title">{{house.title}}</h5>
 						<div class="card-location-wrapper1">
 							<span class="card-link card-reviews card-location"
 								>4 Reviews</span
 							>
+							<span>{{house.title}}/night</span>
+							<a href='/houses/{{house.id}}' class="stretched-link"></a>
 						</div>
 					</div>
 				</div>
+				{{/each}}
+				<!-- *** End House Card -->
 			</div>
 			<!-- ** house card end ** -->
 		</div>
