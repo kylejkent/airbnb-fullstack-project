@@ -10,27 +10,56 @@ const Houses = require('../models/houses')
 // *** GET start ***
 router.get('/', async (req, res, next) => {
   try {
+    console.log(req.query)
     if (
       // *** start authed user
       req.isAuthenticated()
     ) {
+      // *** start search IF ***
+      if (req.query.location == 'all') {
+        delete req.query.location
+      }
+      if (
+        req.query.rooms == 'all' ||
+        req.query.rooms == null ||
+        req.query.rooms == undefined
+      ) {
+        delete req.query.rooms
+      } else {
+        req.query.rooms = { $gte: req.query.rooms }
+      }
+      if (req.query.maxPrice == '' || req.query.maxPrice == null) {
+        delete req.query.maxPrice
+      } else {
+        req.query.maxPrice = { $lte: req.query.maxPrice }
+      }
+      if (req.query.searchBar == '' || req.query.searchBar == null) {
+        delete req.query.searchBar
+      } else {
+        req.query.title = { $regex: req.query.searchBar }
+        delete req.query.searchBar
+      }
+      console.log('query')
+      console.log(req.query)
+      console.log('query')
+      // console.log(houses)
+
+      // *** end search IF ***
       // *** start import houses
-      let houses = await Houses.find(
-        {},
-        {
-          title: 1,
-          price: 1,
-          rooms: 1,
-          location: 1,
-          photos: 1
-        }
-      )
-      console.log(req.body)
-      console.log('Check houses')
+      let houses = await Houses.find(req.query, {
+        title: 1,
+        price: 1,
+        rooms: 1,
+        location: 1,
+        photos: 1
+      })
+      // console.log(req.query)
+      // console.log('Check houses')
       console.log(houses)
       // *** end import houses
+
       // *** start render
-      res.render('./houses/list', {
+      res.render('houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
@@ -40,23 +69,52 @@ router.get('/', async (req, res, next) => {
       // *** end render
       // *** end authed user ***
     } else {
-      let houses = await Houses.find(
-        {},
-        {
-          title: 1,
-          price: 1,
-          rooms: 1,
-          location: 1,
-          photos: 1
-        }
-      )
-      console.log('Check houses')
+      // *** start search IF ***
+      if (req.query.location == 'all') {
+        delete req.query.location
+      }
+      if (
+        req.query.rooms == 'all' ||
+        req.query.rooms == null ||
+        req.query.rooms == undefined
+      ) {
+        delete req.query.rooms
+      } else {
+        req.query.rooms = { $gte: req.query.rooms }
+      }
+      if (req.query.maxPrice == '' || req.query.maxPrice == null) {
+        delete req.query.maxPrice
+      } else {
+        req.query.maxPrice = { $lte: req.query.maxPrice }
+      }
+      if (req.query.searchBar == '' || req.query.searchBar == null) {
+        delete req.query.searchBar
+      } else {
+        req.query.title = { $regex: req.query.searchBar }
+        delete req.query.searchBar
+      }
+      // console.log('query')
+      // console.log(req.query)
+      // console.log('query')
+      // console.log(houses)
+
+      // *** end search IF ***
+      // *** start import houses
+      let houses = await Houses.find(req.query, {
+        // title: 1,
+        // price: 1,
+        // rooms: 1,
+        // location: 1,
+        // photos: 1
+      })
+      console.log(req.query)
+      console.log('not logged')
       console.log(houses)
       // *** end import houses
+
       // *** start render
-      res.render('./houses/list', {
-        houses
-      })
+      res.render('houses/list', { houses })
+      // *** end render
     }
   } catch (err) {
     next(err)
