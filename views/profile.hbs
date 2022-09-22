@@ -13,14 +13,14 @@
 						<label for="exampleFormControlInput1" class="form-label"
 							>Full Name</label
 						>
-						<input type="text" class="form-control" name="profile-name" />
+						<input type="text" class="form-control" name="profile-name" value="{{user.name}}" />
 					</div>
 
 					<div class="mb-2">
 						<label for="exampleFormControlInput3" class="form-label"
 							>Email address</label
 						>
-						<input type="email" class="form-control" name="profile-email" />
+						<input type="email" class="form-control" name="profile-email" value="{{user.email}}" />
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput2" class="form-label"
@@ -30,6 +30,7 @@
 							type="password"
 							class="form-control"
 							name="profile-password"
+							value="user.password"
 						/>
 					</div>
 					<div class="mb-3">
@@ -50,6 +51,7 @@
 							class="form-control"
 							name="profile-picture"
 							placeholder="http://..."
+							value="{{user.avatar}}"
 						/>
 					</div>
 					<div class="">

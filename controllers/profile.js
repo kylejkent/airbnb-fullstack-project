@@ -20,17 +20,13 @@ const router = express.Router()
 // **** START ROUTES START ****
 // *** GET start ***
 router.get('/', (req, res, next) => {
+  console.log(req.user)
   try {
     if (
       // *** start authed user
       req.isAuthenticated()
     ) {
-      res.render('profile', {
-        user: {
-          avatar: req.user.avatar,
-          name: req.user.name
-        }
-      })
+      res.render('profile', { user: req.user })
       // *** end authed user ***
     } else {
       res.redirect('/auth/login')
