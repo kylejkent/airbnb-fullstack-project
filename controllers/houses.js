@@ -39,7 +39,23 @@ router.get('/', async (req, res, next) => {
       // *** end render
       // *** end authed user ***
     } else {
-      res.render('./houses/list')
+      let houses = await Houses.find(
+        {},
+        {
+          title: 1,
+          price: 1,
+          rooms: 1,
+          location: 1,
+          photos: 1
+        }
+      )
+      console.log('Check houses')
+      console.log(houses)
+      // *** end import houses
+      // *** start render
+      res.render('./houses/list', {
+        houses
+      })
     }
   } catch (err) {
     next(err)
