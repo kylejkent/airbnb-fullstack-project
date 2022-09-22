@@ -25,6 +25,7 @@ router.get('/', async (req, res, next) => {
           photos: 1
         }
       )
+      console.log(req.body)
       console.log('Check houses')
       console.log(houses)
       // *** end import houses
