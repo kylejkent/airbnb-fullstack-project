@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
       })
       // *** end authed user ***
     } else {
-      res.redirect('./houses/list')
+      res.render('./houses/list')
     }
   } catch (err) {
     next(err)
