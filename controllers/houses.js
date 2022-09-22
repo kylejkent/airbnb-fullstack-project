@@ -8,18 +8,34 @@ const Houses = require('../models/houses')
 // Routes
 // **** START ROUTES START ****
 // *** GET start ***
-router.get('/', (req, res) => {
+router.get('/', async (req, res, next) => {
   try {
     if (
       // *** start authed user
       req.isAuthenticated()
     ) {
+      // *** start import houses
+      let houses = await Houses.find(
+        {},
+        {
+          title: 1,
+          price: 1,
+          rooms: 1,
+          location: 1,
+          photos: 1
+        }
+      )
+      console.log('Check houses')
+      console.log(houses)
+      // *** end import houses
+      // *** start render
       res.render('./houses/list', {
         user: {
           avatar: req.user.avatar,
           name: req.user.name
         }
       })
+      // *** end render
       // *** end authed user ***
     } else {
       res.render('./houses/list')
